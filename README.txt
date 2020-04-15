@@ -5,3 +5,9 @@ docker pull jupyter/datascience-notebook
 gcloud auth configure-docker 
 docker tag jupyter/datascience-notebook eu.gcr.io/prj-jupiter/jupyter:v1
 docker push eu.gcr.io/prj-jupiter/jupyter:v1
+docker ps
+
+# local jupiter notebook server, with persistance on host
+docker exec -it 8777339c165 jupyter notebook list
+sudo docker run -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v /home/sdgo/git/jupiter/data:/home/jovyan/work  -d jupyter/datascience-notebook
+
